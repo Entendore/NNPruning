@@ -1,0 +1,34 @@
+train:
+  device: "cpu"
+  seed: 42
+  num_networks: 5
+  num_iterations: 1000
+  learning_rate: 0.01
+
+data:
+  task: "synthetic-classification"
+  n_samples: 1000
+
+prune:
+  diff_mode: "relative"
+  threshold: 0.1
+  stability_percentage: 0.8
+  keep_at_least_one_per_layer: true
+
+eval:
+  report_accuracy: true
+  report_ce_loss: true
+  report_training_curves: false
+
+architectures:
+  - name: "small_net"
+    input_size: 10
+    hidden_sizes: [20, 15]
+    output_size: 5
+    activation: "relu"
+    
+  - name: "medium_net"
+    input_size: 10
+    hidden_sizes: [30, 25, 20]
+    output_size: 5
+    activation: "relu"
